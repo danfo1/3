@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/consultar.css">
+    <title>Registros Usuarios</title>
+    <script src="https://kit.fontawesome.com/82559006af.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="volver">
+        <a href="../inicio.html">
+            <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+        </a>
+    </div>
+    <div class="titulo">
+        <p> Gestión Usuarios </p>
+    </div>
+        <div class="container">
+            <form method="POST" action="/ORDEN.consultar">
+                <div class="serch" name="Buscar">
+                    <input type="text" name="txtBuscar" placeholder="Buscar">
+                    <div class="btn">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+            </form>
+            <table class="table_usu">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>descripcion</th>
+                        <th>radio</th>
+                        <th>antena</th>
+                        <th>encendedot</th>
+                        <th>tapetes</th>
+                        <th>soat</th>
+                        <th>grua</th>
+                        <th>estado de llantas</th>
+                        <th>llave de pernos </th>
+                        <th>llanta de repuesto</th>
+                        <th>tapa de gasolina </th>
+                        <th>herramientas</th>
+                        <th>kit de carretera</th>
+                        <th>copas</th>
+                        <th>trargeta de propiedad</th>
+                        <th>fotos</th>
+                        <th>golpe</th>
+                        <th>rayado</th>
+                        <th>manchado</th>
+                        <th>sucio</th>
+                        <th>estado del proceso</th>
+                        <th>inico</th>
+                        <th>fin</th>
+                    </tr>
+                </thead>
+                <tbody class="datos">
+                    {% for ordenes in orden %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ orden.placa }}</td>  <!-- Acceder al segundo elemento de la tupla (nombres) -->
+                        <td>{{ orden.descripcion }}</td>  <!-- Acceder al tercer elemento de la tupla (apellidos) -->
+                        <td>{{ orden.radio}}</td>  <!-- Acceder al cuarto elemento de la tupla (tipo_documento) -->
+                        <td>{{ orden.antena }}</td>  <!-- Acceder al quinto elemento de la tupla (num_documento) -->
+                        <td>{{ orden.encendedor }}</td>  <!-- Acceder al sexto elemento de la tupla (correo) -->
+                        <td>{{ orden.tapetes }}</td>  <!-- Acceder al séptimo elemento de la tupla (telefono) -->
+                        <td>{{ orden.soat }}</td>  <!-- Acceder al octavo elemento de la tupla (telefono_respaldo) -->
+                        <td>{{ orden.grua }}</td>  <!-- Acceder al noveno elemento de la tupla (estado) -->
+                        <td>{{orden.estado_llantas}}</td>  <!-- Acceder al décimo elemento de la tupla (nombreusu) -->
+                        <td>{{ orden.llave_pernos}}</td> <!-- Acceder al undécimo elemento de la tupla (contrasena) -->
+                        <td>{{ orden.tapa_gasolina }}</td> <!-- Acceder al duodécimo elemento de la tupla (fk_id_rol) -->
+                        <td>
+                            <div class="direct"> 
+                                <a href="/ORDEN.editar_orden/{{ orden.id_orden }}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                </a>
+                            </div> 
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>    
+            </table>
+            <a href="/ORDEN.registrarorden">
+                <button class="registro">crear orden </button> 
+            </a>
+        </div>
+    </body>
+</html>
